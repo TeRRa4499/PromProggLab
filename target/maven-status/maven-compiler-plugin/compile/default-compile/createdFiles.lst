@@ -1,0 +1,7 @@
+ru\example\servlet\StudentsServlet.class
+ru\example\servlet\GroupsServlet.class
+ru\example\servlet\DeleteGroupServlet.class
+ru\example\model\Group.class
+ru\example\model\Student.class
+ru\example\servlet\DeleteStudentServlet.class
+ru\example\storage\Storage.class
