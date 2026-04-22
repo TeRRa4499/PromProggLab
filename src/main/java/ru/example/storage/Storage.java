@@ -14,13 +14,13 @@ public final class Storage {
     private static final Map<Integer, Student> students = new HashMap<>();
 
     static {
-        createGroup(new Group(null, "PI-101", 1, "FCS"));
-        createGroup(new Group(null, "PI-202", 2, "FCS"));
-        createGroup(new Group(null, "IS-301", 3, "FIS"));
+        createGroup(new Group(null, "ПИ24_1Д", 1, "ФМиИТ"));
+        createGroup(new Group(null, "ПИ25_1Д", 2, "ФМиИТ"));
+        createGroup(new Group(null, "ПИ23_1Д", 3, "ФМиИТ"));
 
-        createStudent(new Student(null, "RB-0001", "Ivanov", "Ivan", 1));
-        createStudent(new Student(null, "RB-0002", "Petrova", "Anna", 1));
-        createStudent(new Student(null, "RB-0003", "Sidorov", "Petr", 2));
+        createStudent(new Student(null, "12154543", "Иванов", "Иван", 1));
+        createStudent(new Student(null, "12154542", "Петров", "Пётр", 1));
+        createStudent(new Student(null, "12154541", "Сидоров", "Сидор", 2));
     }
 
     private Storage() {

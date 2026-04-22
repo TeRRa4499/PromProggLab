@@ -30,6 +30,24 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>EditGroupServlet</servlet-name>
+        <servlet-class>ru.example.servlet.EditGroupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditGroupServlet</servlet-name>
+        <url-pattern>/groups/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SaveGroupServlet</servlet-name>
+        <servlet-class>ru.example.servlet.SaveGroupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveGroupServlet</servlet-name>
+        <url-pattern>/groups/save</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>StudentsServlet</servlet-name>
         <servlet-class>ru.example.servlet.StudentsServlet</servlet-class>
     </servlet>
@@ -45,6 +63,24 @@
     <servlet-mapping>
         <servlet-name>DeleteStudentServlet</servlet-name>
         <url-pattern>/students/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditStudentServlet</servlet-name>
+        <servlet-class>ru.example.servlet.EditStudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditStudentServlet</servlet-name>
+        <url-pattern>/students/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SaveStudentServlet</servlet-name>
+        <servlet-class>ru.example.servlet.SaveStudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveStudentServlet</servlet-name>
+        <url-pattern>/students/save</url-pattern>
     </servlet-mapping>
 
 </web-app>

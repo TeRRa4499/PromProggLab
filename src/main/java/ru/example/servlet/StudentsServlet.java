@@ -24,17 +24,13 @@ public class StudentsServlet extends HttpServlet {
         w.println("</head><body>");
         w.println("<h2>Students</h2>");
         w.println("<p><a href='groups'>Groups</a></p>");
-        w.println("<form method='post' action='students'>");
-        w.println("Record book: <input name='recordBookNumber' required> ");
-        w.println("Last name: <input name='lastName' required> ");
-        w.println("First name: <input name='firstName' required> ");
-        w.println("Group ID: <input type='number' min='1' name='groupId' required> ");
-        w.println("<button type='submit'>Add</button></form><br>");
+        w.println("<p><a href='students/edit'>Add new student</a></p>");
         w.println("<table><tr><th>ID</th><th>RecordBook</th><th>Last Name</th><th>First Name</th><th>Group ID</th><th>Action</th></tr>");
 
         for (Student student : students) {
             w.printf(
                     "<tr><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td><td>"
+                            + "<a href='students/edit?id=%d'>Edit</a> "
                             + "<form method='post' action='students/delete' style='display:inline'>"
                             + "<input type='hidden' name='id' value='%d'>"
                             + "<button type='submit'>Delete</button></form>"
@@ -44,32 +40,12 @@ public class StudentsServlet extends HttpServlet {
                     escape(student.getLastName()),
                     escape(student.getFirstName()),
                     student.getGroupId(),
+                    student.getStudentId(),
                     student.getStudentId()
             );
         }
 
         w.println("</table></body></html>");
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        String recordBookNumber = req.getParameter("recordBookNumber");
-        String lastName = req.getParameter("lastName");
-        String firstName = req.getParameter("firstName");
-        String groupId = req.getParameter("groupId");
-
-        if (recordBookNumber != null && lastName != null && firstName != null && groupId != null) {
-            Storage.createStudent(new Student(
-                    null,
-                    recordBookNumber.trim(),
-                    lastName.trim(),
-                    firstName.trim(),
-                    Integer.parseInt(groupId)
-            ));
-        }
-
-        resp.sendRedirect(req.getContextPath() + "/students");
     }
 
     private String escape(String value) {

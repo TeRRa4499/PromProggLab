@@ -24,16 +24,13 @@ public class GroupsServlet extends HttpServlet {
         w.println("</head><body>");
         w.println("<h2>Groups</h2>");
         w.println("<p><a href='students'>Students</a></p>");
-        w.println("<form method='post' action='groups'>");
-        w.println("Name: <input name='groupName' required> ");
-        w.println("Course: <input type='number' min='1' name='course' required> ");
-        w.println("Faculty: <input name='faculty' required> ");
-        w.println("<button type='submit'>Add</button></form><br>");
+        w.println("<p><a href='groups/edit'>Add new group</a></p>");
         w.println("<table><tr><th>ID</th><th>Name</th><th>Course</th><th>Faculty</th><th>Action</th></tr>");
 
         for (Group group : groups) {
             w.printf(
                     "<tr><td>%d</td><td>%s</td><td>%d</td><td>%s</td><td>"
+                            + "<a href='groups/edit?id=%d'>Edit</a> "
                             + "<form method='post' action='groups/delete' style='display:inline'>"
                             + "<input type='hidden' name='id' value='%d'>"
                             + "<button type='submit'>Delete</button></form>"
@@ -42,25 +39,12 @@ public class GroupsServlet extends HttpServlet {
                     escape(group.getGroupName()),
                     group.getCourse(),
                     escape(group.getFaculty()),
+                    group.getGroupId(),
                     group.getGroupId()
             );
         }
 
         w.println("</table></body></html>");
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        String groupName = req.getParameter("groupName");
-        String course = req.getParameter("course");
-        String faculty = req.getParameter("faculty");
-
-        if (groupName != null && !groupName.trim().isEmpty() && course != null && faculty != null) {
-            Storage.createGroup(new Group(null, groupName.trim(), Integer.parseInt(course), faculty.trim()));
-        }
-
-        resp.sendRedirect(req.getContextPath() + "/groups");
     }
 
     private String escape(String value) {

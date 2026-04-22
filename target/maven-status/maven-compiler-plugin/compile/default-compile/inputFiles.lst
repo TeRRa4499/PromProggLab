@@ -2,6 +2,10 @@ C:\Users\Home\Desktop\Промышлленное\servlet\src\main\java\ru\exampl
 C:\Users\Home\Desktop\Промышлленное\servlet\src\main\java\ru\example\model\Student.java
 C:\Users\Home\Desktop\Промышлленное\servlet\src\main\java\ru\example\servlet\DeleteGroupServlet.java
 C:\Users\Home\Desktop\Промышлленное\servlet\src\main\java\ru\example\servlet\DeleteStudentServlet.java
+C:\Users\Home\Desktop\Промышлленное\servlet\src\main\java\ru\example\servlet\EditGroupServlet.java
+C:\Users\Home\Desktop\Промышлленное\servlet\src\main\java\ru\example\servlet\EditStudentServlet.java
 C:\Users\Home\Desktop\Промышлленное\servlet\src\main\java\ru\example\servlet\GroupsServlet.java
+C:\Users\Home\Desktop\Промышлленное\servlet\src\main\java\ru\example\servlet\SaveGroupServlet.java
+C:\Users\Home\Desktop\Промышлленное\servlet\src\main\java\ru\example\servlet\SaveStudentServlet.java
 C:\Users\Home\Desktop\Промышлленное\servlet\src\main\java\ru\example\servlet\StudentsServlet.java
 C:\Users\Home\Desktop\Промышлленное\servlet\src\main\java\ru\example\storage\Storage.java
