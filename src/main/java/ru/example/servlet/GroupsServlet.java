@@ -8,52 +8,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Collection;
 
 public class GroupsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Collection<Group> groups = Storage.readAllGroups();
-        resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
-        PrintWriter w = resp.getWriter();
-
-        w.println("<html><head><meta charset='UTF-8'><title>Groups</title>");
-        w.println("<style>table{border-collapse:collapse}th,td{border:1px solid black;padding:6px}</style>");
-        w.println("</head><body>");
-        w.println("<h2>Groups</h2>");
-        w.println("<p><a href='students'>Students</a></p>");
-        w.println("<p><a href='groups/edit'>Add new group</a></p>");
-        w.println("<table><tr><th>ID</th><th>Name</th><th>Course</th><th>Faculty</th><th>Action</th></tr>");
-
-        for (Group group : groups) {
-            w.printf(
-                    "<tr><td>%d</td><td>%s</td><td>%d</td><td>%s</td><td>"
-                            + "<a href='groups/edit?id=%d'>Edit</a> "
-                            + "<form method='post' action='groups/delete' style='display:inline'>"
-                            + "<input type='hidden' name='id' value='%d'>"
-                            + "<button type='submit'>Delete</button></form>"
-                            + "</td></tr>",
-                    group.getGroupId(),
-                    escape(group.getGroupName()),
-                    group.getCourse(),
-                    escape(group.getFaculty()),
-                    group.getGroupId(),
-                    group.getGroupId()
-            );
-        }
-
-        w.println("</table></body></html>");
-    }
-
-    private String escape(String value) {
-        if (value == null) {
-            return "";
-        }
-        return value.replace("&", "&amp;")
-                .replace("<", "&lt;")
-                .replace(">", "&gt;")
-                .replace("\"", "&quot;");
+        req.setAttribute("groups", groups);
+        req.getRequestDispatcher("/WEB-INF/views/groups.jsp").forward(req, resp);
     }
 }
