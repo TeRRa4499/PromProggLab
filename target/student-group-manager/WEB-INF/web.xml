@@ -3,14 +3,14 @@
          xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
-         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
-
-    <display-name>Student Group Manager</display-name>
-
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <display-name>University Manager</display-name>
+    
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <!-- ================= GROUPS ================= -->
     <servlet>
         <servlet-name>GroupsServlet</servlet-name>
         <servlet-class>ru.example.servlet.GroupsServlet</servlet-class>
@@ -18,15 +18,6 @@
     <servlet-mapping>
         <servlet-name>GroupsServlet</servlet-name>
         <url-pattern>/groups</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>DeleteGroupServlet</servlet-name>
-        <servlet-class>ru.example.servlet.DeleteGroupServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteGroupServlet</servlet-name>
-        <url-pattern>/groups/delete</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -48,21 +39,22 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>DeleteGroupServlet</servlet-name>
+        <servlet-class>ru.example.servlet.DeleteGroupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteGroupServlet</servlet-name>
+        <url-pattern>/groups/delete</url-pattern>
+    </servlet-mapping>
+
+    <!-- ================= STUDENTS ================= -->
+    <servlet>
         <servlet-name>StudentsServlet</servlet-name>
         <servlet-class>ru.example.servlet.StudentsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>StudentsServlet</servlet-name>
         <url-pattern>/students</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>DeleteStudentServlet</servlet-name>
-        <servlet-class>ru.example.servlet.DeleteStudentServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteStudentServlet</servlet-name>
-        <url-pattern>/students/delete</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -81,6 +73,163 @@
     <servlet-mapping>
         <servlet-name>SaveStudentServlet</servlet-name>
         <url-pattern>/students/save</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteStudentServlet</servlet-name>
+        <servlet-class>ru.example.servlet.DeleteStudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteStudentServlet</servlet-name>
+        <url-pattern>/students/delete</url-pattern>
+    </servlet-mapping>
+
+    <!-- ================= USERS ================= -->
+    <servlet>
+        <servlet-name>UsersServlet</servlet-name>
+        <servlet-class>ru.example.servlet.UsersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsersServlet</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditUserServlet</servlet-name>
+        <servlet-class>ru.example.servlet.EditUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditUserServlet</servlet-name>
+        <url-pattern>/users/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SaveUserServlet</servlet-name>
+        <servlet-class>ru.example.servlet.SaveUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveUserServlet</servlet-name>
+        <url-pattern>/users/save</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <servlet-class>ru.example.servlet.DeleteUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <url-pattern>/users/delete</url-pattern>
+    </servlet-mapping>
+
+    <!-- ================= SUBJECTS ================= -->
+    <servlet>
+        <servlet-name>SubjectsServlet</servlet-name>
+        <servlet-class>ru.example.servlet.SubjectsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubjectsServlet</servlet-name>
+        <url-pattern>/subjects</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditSubjectServlet</servlet-name>
+        <servlet-class>ru.example.servlet.EditSubjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditSubjectServlet</servlet-name>
+        <url-pattern>/subjects/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SaveSubjectServlet</servlet-name>
+        <servlet-class>ru.example.servlet.SaveSubjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveSubjectServlet</servlet-name>
+        <url-pattern>/subjects/save</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteSubjectServlet</servlet-name>
+        <servlet-class>ru.example.servlet.DeleteSubjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteSubjectServlet</servlet-name>
+        <url-pattern>/subjects/delete</url-pattern>
+    </servlet-mapping>
+
+    <!-- ================= SESSIONS ================= -->
+    <servlet>
+        <servlet-name>SessionsServlet</servlet-name>
+        <servlet-class>ru.example.servlet.SessionsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionsServlet</servlet-name>
+        <url-pattern>/sessions</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditSessionServlet</servlet-name>
+        <servlet-class>ru.example.servlet.EditSessionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditSessionServlet</servlet-name>
+        <url-pattern>/sessions/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SaveSessionServlet</servlet-name>
+        <servlet-class>ru.example.servlet.SaveSessionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveSessionServlet</servlet-name>
+        <url-pattern>/sessions/save</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteSessionServlet</servlet-name>
+        <servlet-class>ru.example.servlet.DeleteSessionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteSessionServlet</servlet-name>
+        <url-pattern>/sessions/delete</url-pattern>
+    </servlet-mapping>
+
+    <!-- ================= GRADES ================= -->
+    <servlet>
+        <servlet-name>GradesServlet</servlet-name>
+        <servlet-class>ru.example.servlet.GradesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GradesServlet</servlet-name>
+        <url-pattern>/grades</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditGradeServlet</servlet-name>
+        <servlet-class>ru.example.servlet.EditGradeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditGradeServlet</servlet-name>
+        <url-pattern>/grades/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SaveGradeServlet</servlet-name>
+        <servlet-class>ru.example.servlet.SaveGradeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveGradeServlet</servlet-name>
+        <url-pattern>/grades/save</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteGradeServlet</servlet-name>
+        <servlet-class>ru.example.servlet.DeleteGradeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteGradeServlet</servlet-name>
+        <url-pattern>/grades/delete</url-pattern>
     </servlet-mapping>
 
 </web-app>
