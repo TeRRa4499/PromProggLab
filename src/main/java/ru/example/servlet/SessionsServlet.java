@@ -6,13 +6,18 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Collection;
 
 public class SessionsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Collection<Session> sessions = Storage.readAllSessions();
-        req.setAttribute("sessions", sessions);
-        req.getRequestDispatcher("/WEB-INF/views/sessions.jsp").forward(req, resp);
+        try {
+            Collection<Session> sessions = Storage.readAllSessions();
+            req.setAttribute("sessions", sessions);
+            req.getRequestDispatcher("/WEB-INF/views/sessions.jsp").forward(req, resp);
+        } catch (SQLException e) {
+            throw new ServletException("Failed to load sessions", e);
+        }
     }
 }
