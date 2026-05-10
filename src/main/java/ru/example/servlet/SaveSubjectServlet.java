@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SaveSubjectServlet extends HttpServlet {
     @Override
@@ -23,7 +24,7 @@ public class SaveSubjectServlet extends HttpServlet {
                 } else {
                     Storage.createSubject(subject);
                 }
-            } catch (NumberFormatException ignored) {}
+            } catch (NumberFormatException | SQLException ignored) {}
         }
         resp.sendRedirect(req.getContextPath() + "/subjects");
     }

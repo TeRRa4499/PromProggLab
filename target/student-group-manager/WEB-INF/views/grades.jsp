@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>Grades</h2>
-<p><a href="${pageContext.request.contextPath}/students">Students</a></p>
+<p><a href="${pageContext.request.contextPath}/">на домашнюю</a></p>
 <p><a href="${pageContext.request.contextPath}/grades/edit">Add new grade</a></p>
 
 <table>

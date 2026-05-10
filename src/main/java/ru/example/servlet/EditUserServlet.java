@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class EditUserServlet extends HttpServlet {
     @Override
@@ -13,7 +14,7 @@ public class EditUserServlet extends HttpServlet {
         String id = req.getParameter("id");
         User user = null;
         if (id != null && !id.isBlank()) {
-            try { user = Storage.readUserById(Integer.parseInt(id)); } catch (NumberFormatException ignored) {}
+            try { user = Storage.readUserById(Integer.parseInt(id)); } catch (NumberFormatException | SQLException ignored) {}
         }
         req.setAttribute("user", user);
         req.setAttribute("isEdit", user != null);

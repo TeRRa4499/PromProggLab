@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>Users</h2>
-<p><a href="${pageContext.request.contextPath}/students">Students</a></p>
+<p><a href="${pageContext.request.contextPath}/">на домашнюю</a></p>
 <p><a href="${pageContext.request.contextPath}/users/edit">Add new user</a></p>
 
 <table>

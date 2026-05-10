@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>Sessions</h2>
-<p><a href="${pageContext.request.contextPath}/grades">Grades</a></p>
+<p><a href="${pageContext.request.contextPath}/">на домашнюю</a></p>
 <p><a href="${pageContext.request.contextPath}/sessions/edit">Add new session</a></p>
 
 <table>

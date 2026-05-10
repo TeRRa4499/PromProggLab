@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SaveSessionServlet extends HttpServlet {
     @Override
@@ -25,7 +26,7 @@ public class SaveSessionServlet extends HttpServlet {
                 } else {
                     Storage.createSession(session);
                 }
-            } catch (NumberFormatException ignored) {}
+            } catch (NumberFormatException | SQLException ignored) {}
         }
         resp.sendRedirect(req.getContextPath() + "/sessions");
     }

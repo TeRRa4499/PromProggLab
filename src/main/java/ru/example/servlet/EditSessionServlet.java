@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class EditSessionServlet extends HttpServlet {
     @Override
@@ -13,7 +14,7 @@ public class EditSessionServlet extends HttpServlet {
         String id = req.getParameter("id");
         Session session = null;
         if (id != null && !id.isBlank()) {
-            try { session = Storage.readSessionById(Integer.parseInt(id)); } catch (NumberFormatException ignored) {}
+            try { session = Storage.readSessionById(Integer.parseInt(id)); } catch (NumberFormatException | SQLException ignored) {}
         }
         req.setAttribute("session", session);
         req.setAttribute("isEdit", session != null);

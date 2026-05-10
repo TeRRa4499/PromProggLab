@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class EditGroupServlet extends HttpServlet {
     @Override
@@ -18,7 +19,7 @@ public class EditGroupServlet extends HttpServlet {
         if (id != null && !id.isBlank()) {
             try {
                 group = Storage.readGroupById(Integer.parseInt(id));
-            } catch (NumberFormatException ignored) {
+            } catch (NumberFormatException | SQLException ignored) {
                 group = null;
             }
         }

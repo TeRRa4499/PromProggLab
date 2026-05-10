@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class EditSubjectServlet extends HttpServlet {
     @Override
@@ -13,7 +14,7 @@ public class EditSubjectServlet extends HttpServlet {
         String id = req.getParameter("id");
         Subject subject = null;
         if (id != null && !id.isBlank()) {
-            try { subject = Storage.readSubjectById(Integer.parseInt(id)); } catch (NumberFormatException ignored) {}
+            try { subject = Storage.readSubjectById(Integer.parseInt(id)); } catch (NumberFormatException | SQLException ignored) {}
         }
         req.setAttribute("subject", subject);
         req.setAttribute("isEdit", subject != null);

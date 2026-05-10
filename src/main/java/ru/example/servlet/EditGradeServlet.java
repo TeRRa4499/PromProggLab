@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class EditGradeServlet extends HttpServlet {
     @Override
@@ -13,7 +14,7 @@ public class EditGradeServlet extends HttpServlet {
         String id = req.getParameter("id");
         Grade grade = null;
         if (id != null && !id.isBlank()) {
-            try { grade = Storage.readGradeById(Integer.parseInt(id)); } catch (NumberFormatException ignored) {}
+            try { grade = Storage.readGradeById(Integer.parseInt(id)); } catch (NumberFormatException | SQLException ignored) {}
         }
         req.setAttribute("grade", grade);
         req.setAttribute("isEdit", grade != null);

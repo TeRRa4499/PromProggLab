@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class SaveUserServlet extends HttpServlet {
@@ -34,7 +35,7 @@ public class SaveUserServlet extends HttpServlet {
                 } else {
                     Storage.createUser(user);
                 }
-            } catch (Exception ignored) {}
+            } catch (NumberFormatException | SQLException ignored) {}
         }
         resp.sendRedirect(req.getContextPath() + "/users");
     }

@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>Subjects</h2>
-<p><a href="${pageContext.request.contextPath}/sessions">Sessions</a></p>
+<p><a href="${pageContext.request.contextPath}/">на домашнюю</a></p>
 <p><a href="${pageContext.request.contextPath}/subjects/edit">Add new subject</a></p>
 
 <table>

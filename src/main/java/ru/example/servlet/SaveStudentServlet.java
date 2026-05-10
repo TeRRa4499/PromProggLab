@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SaveStudentServlet extends HttpServlet {
     @Override
@@ -38,7 +39,7 @@ public class SaveStudentServlet extends HttpServlet {
                 } else {
                     Storage.createStudent(student);
                 }
-            } catch (NumberFormatException ignored) {
+            } catch (NumberFormatException | SQLException ignored) {
                 // Ignore invalid numeric input and just redirect back.
             }
         }
