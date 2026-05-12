@@ -1,4 +1,4 @@
-﻿package ru.example.servlet;
+package ru.example.servlet;
 import ru.example.model.Grade;
 import ru.example.storage.Storage;
 import jakarta.servlet.ServletException;

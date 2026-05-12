@@ -1,4 +1,4 @@
-﻿package ru.example.servlet;
+package ru.example.servlet;
 
 import ru.example.model.Group;
 import ru.example.storage.Storage;

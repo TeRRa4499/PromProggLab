@@ -6,23 +6,6 @@
                              https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <display-name>University Manager</display-name>
 
-    <context-param>
-        <param-name>jdbc.driver</param-name>
-        <param-value>com.mysql.cj.jdbc.Driver</param-value>
-    </context-param>
-    <context-param>
-        <param-name>jdbc.url</param-name>
-        <param-value>jdbc:mysql://localhost:3306/university?useSSL=false&amp;serverTimezone=UTC</param-value>
-    </context-param>
-    <context-param>
-        <param-name>jdbc.user</param-name>
-        <param-value>root</param-value>
-    </context-param>
-    <context-param>
-        <param-name>jdbc.password</param-name>
-        <param-value></param-value>
-    </context-param>
-
     <servlet>
         <servlet-name>StartupServlet</servlet-name>
         <servlet-class>ru.example.servlet.StartupServlet</servlet-class>
