@@ -32,7 +32,36 @@ public final class Storage {
     private static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
     }
-
+    public static boolean checkUser(User user) throws SQLException {
+        String sql = "SELECT COUNT(*) AS `amount` "
+                   + "FROM `users` "
+                   + "WHERE `login` = ? AND `password` = ?";
+        Connection c = null;
+        PreparedStatement s = null;
+        ResultSet r = null;
+        try {
+            c = getConnection();
+            s = c.prepareStatement(sql);
+            s.setString(1, user.getLogin());
+            s.setString(2, user.getPassword());
+            r = s.executeQuery();
+            if(r.next()) {
+                return r.getInt("amount") == 1;
+            }
+            return false;
+        } finally {
+            try {
+                r.close();
+            } catch(NullPointerException | SQLException e) {}
+            try {
+                s.close();
+            } catch(NullPointerException | SQLException e) {}
+            try {
+                c.close();
+            } catch(NullPointerException | SQLException e) {}
+        }
+    }
+    
     // ==================== GROUP ====================
     public static Collection<Group> readAllGroups() throws SQLException {
         String sql = "SELECT `GroupID`, `GroupName`, `Course`, `Faculty` FROM `Groups`";
@@ -234,7 +263,7 @@ public final class Storage {
 
     // ==================== USER ====================
     public static Collection<User> readAllUsers() throws SQLException {
-        String sql = "SELECT `UserID`, `Login`, `PasswordHash`, `Role`, `StudentID`, `Email`, `CreatedDate`, `IsActive` FROM `Users`";
+        String sql = "SELECT `UserID`, `Login`, `password`, `Role`, `StudentID`, `Email`, `CreatedDate`, `IsActive` FROM `Users`";
         Connection c = null; Statement s = null; ResultSet r = null;
         try {
             c = getConnection(); s = c.createStatement(); r = s.executeQuery(sql);
@@ -243,7 +272,7 @@ public final class Storage {
                 User u = new User();
                 u.setUserId(r.getInt("UserID"));
                 u.setLogin(r.getString("Login"));
-                u.setPasswordHash(r.getString("PasswordHash"));
+                u.setpassword(r.getString("password"));
                 u.setRole(r.getString("Role"));
                 u.setStudentId(r.getObject("StudentID", Integer.class));
                 u.setEmail(r.getString("Email"));
@@ -260,7 +289,7 @@ public final class Storage {
     }
 
     public static User readUserById(Integer id) throws SQLException {
-        String sql = "SELECT `Login`, `PasswordHash`, `Role`, `StudentID`, `Email`, `CreatedDate`, `IsActive` FROM `Users` WHERE `UserID` = ?";
+        String sql = "SELECT `Login`, `password`, `Role`, `StudentID`, `Email`, `CreatedDate`, `IsActive` FROM `Users` WHERE `UserID` = ?";
         Connection c = null; PreparedStatement s = null; ResultSet r = null;
         try {
             c = getConnection(); s = c.prepareStatement(sql);
@@ -270,7 +299,7 @@ public final class Storage {
                 u = new User();
                 u.setUserId(id);
                 u.setLogin(r.getString("Login"));
-                u.setPasswordHash(r.getString("PasswordHash"));
+                u.setpassword(r.getString("password"));
                 u.setRole(r.getString("Role"));
                 u.setStudentId(r.getObject("StudentID", Integer.class));
                 u.setEmail(r.getString("Email"));
@@ -286,12 +315,12 @@ public final class Storage {
     }
 
     public static void createUser(User user) throws SQLException {
-        String sql = "INSERT INTO `Users` (`Login`, `PasswordHash`, `Role`, `StudentID`, `Email`, `CreatedDate`, `IsActive`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO `Users` (`Login`, `password`, `Role`, `StudentID`, `Email`, `CreatedDate`, `IsActive`) VALUES (?, ?, ?, ?, ?, ?, ?)";
         Connection c = null; PreparedStatement s = null;
         try {
             c = getConnection(); s = c.prepareStatement(sql);
             s.setString(1, user.getLogin());
-            s.setString(2, user.getPasswordHash());
+            s.setString(2, user.getpassword());
             s.setString(3, user.getRole());
             s.setObject(4, user.getStudentId());
             s.setString(5, user.getEmail());
@@ -305,12 +334,12 @@ public final class Storage {
     }
 
     public static void updateUser(User user) throws SQLException {
-        String sql = "UPDATE `Users` SET `Login` = ?, `PasswordHash` = ?, `Role` = ?, `StudentID` = ?, `Email` = ?, `CreatedDate` = ?, `IsActive` = ? WHERE `UserID` = ?";
+        String sql = "UPDATE `Users` SET `Login` = ?, `password` = ?, `Role` = ?, `StudentID` = ?, `Email` = ?, `CreatedDate` = ?, `IsActive` = ? WHERE `UserID` = ?";
         Connection c = null; PreparedStatement s = null;
         try {
             c = getConnection(); s = c.prepareStatement(sql);
             s.setString(1, user.getLogin());
-            s.setString(2, user.getPasswordHash());
+            s.setString(2, user.getpassword());
             s.setString(3, user.getRole());
             s.setObject(4, user.getStudentId());
             s.setString(5, user.getEmail());

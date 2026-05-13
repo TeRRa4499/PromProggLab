@@ -13,7 +13,9 @@
 <body>
 <h2>Grades</h2>
 <p><a href="${pageContext.request.contextPath}/">на домашнюю</a></p>
+<c:if test="${not empty user}">
 <p><a href="${pageContext.request.contextPath}/grades/edit">Add new grade</a></p>
+</c:if>
 
 <table>
     <tr>
@@ -22,7 +24,9 @@
         <th>Subject ID</th>
         <th>Session ID</th>
         <th>Score</th>
+        <c:if test="${not empty user}">
         <th>Action</th>
+        </c:if>
     </tr>
     <c:forEach var="grade" items="${grades}">
         <tr>
@@ -31,6 +35,7 @@
             <td><c:out value="${grade.subjectId}" /></td>
             <td><c:out value="${grade.sessionId}" /></td>
             <td><c:out value="${grade.score}" /></td>
+            <c:if test="${not empty user}">
             <td>
                 <a href="${pageContext.request.contextPath}/grades/edit?id=${grade.gradeId}">Edit</a>
                 <form method="post" action="${pageContext.request.contextPath}/grades/delete" style="display:inline">
@@ -38,6 +43,7 @@
                     <button type="submit">Delete</button>
                 </form>
             </td>
+            </c:if>
         </tr>
     </c:forEach>
 </table>

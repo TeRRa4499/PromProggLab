@@ -13,7 +13,9 @@
 <body>
 <h2>Students</h2>
 <p><a href="${pageContext.request.contextPath}/">на домашнюю</a></p>
+<c:if test="${not empty user}">
 <p><a href="${pageContext.request.contextPath}/students/edit">Add new student</a></p>
+</c:if>
 
 <table>
     <tr>
@@ -22,7 +24,9 @@
         <th>Last Name</th>
         <th>First Name</th>
         <th>Group ID</th>
+        <c:if test="${not empty user}">
         <th>Action</th>
+        </c:if>
     </tr>
     <c:forEach var="student" items="${students}">
         <tr>
@@ -31,6 +35,7 @@
             <td><c:out value="${student.lastName}" /></td>
             <td><c:out value="${student.firstName}" /></td>
             <td><c:out value="${student.groupId}" /></td>
+            <c:if test="${not empty user}">
             <td>
                 <a href="${pageContext.request.contextPath}/students/edit?id=${student.studentId}">Edit</a>
                 <form method="post" action="${pageContext.request.contextPath}/students/delete" style="display:inline">
@@ -38,6 +43,7 @@
                     <button type="submit">Delete</button>
                 </form>
             </td>
+            </c:if>
         </tr>
     </c:forEach>
 </table>

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class User {
     private Integer userId;
     private String login;
-    private String passwordHash;
+    private String password;
     private String role;
     private Integer studentId;
     private String email;
@@ -14,11 +14,11 @@ public class User {
 
     public User() {}
 
-    public User(Integer userId, String login, String passwordHash, String role, 
+    public User(Integer userId, String login, String password, String role, 
                 Integer studentId, String email, LocalDate createdDate, Boolean isActive) {
         this.userId = userId;
         this.login = login;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.role = role;
         this.studentId = studentId;
         this.email = email;
@@ -32,8 +32,8 @@ public class User {
     public String getLogin() { return login; }
     public void setLogin(String login) { this.login = login; }
 
-    public String getPasswordHash() { return passwordHash; }
-    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
+    public String getpassword() { return password; }
+    public void setpassword(String password) { this.password = password; }
 
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }

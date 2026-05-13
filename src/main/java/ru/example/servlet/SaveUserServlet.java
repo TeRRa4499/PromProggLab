@@ -15,7 +15,7 @@ public class SaveUserServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String id = req.getParameter("id");
         String login = req.getParameter("login");
-        String passwordHash = req.getParameter("passwordHash");
+        String password = req.getParameter("password");
         String role = req.getParameter("role");
         String studentIdStr = req.getParameter("studentId");
         String email = req.getParameter("email");
@@ -28,7 +28,7 @@ public class SaveUserServlet extends HttpServlet {
                 LocalDate createdDate = createdDateStr != null && !createdDateStr.isBlank() ? LocalDate.parse(createdDateStr) : LocalDate.now();
                 Boolean isActive = isActiveStr != null && !isActiveStr.isBlank() ? Boolean.parseBoolean(isActiveStr) : true;
 
-                User user = new User(null, login.trim(), passwordHash, role.trim(), studentId, email, createdDate, isActive);
+                User user = new User(null, login.trim(), password, role.trim(), studentId, email, createdDate, isActive);
                 if (id != null && !id.isBlank()) {
                     user.setUserId(Integer.parseInt(id));
                     Storage.updateUser(user);

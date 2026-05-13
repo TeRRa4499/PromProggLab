@@ -13,7 +13,9 @@
 <body>
 <h2>Groups</h2>
 <p><a href="${pageContext.request.contextPath}/">на домашнюю</a></p>
+<c:if test="${not empty user}">
 <p><a href="${pageContext.request.contextPath}/groups/edit">Add new group</a></p>
+</c:if>
 
 <table>
     <tr>
@@ -21,7 +23,9 @@
         <th>Name</th>
         <th>Course</th>
         <th>Faculty</th>
+        <c:if test="${not empty user}">
         <th>Action</th>
+        </c:if>
     </tr>
     <c:forEach var="group" items="${groups}">
         <tr>
@@ -29,6 +33,7 @@
             <td><c:out value="${group.groupName}" /></td>
             <td><c:out value="${group.course}" /></td>
             <td><c:out value="${group.faculty}" /></td>
+            <c:if test="${not empty user}">
             <td>
                 <a href="${pageContext.request.contextPath}/groups/edit?id=${group.groupId}">Edit</a>
                 <form method="post" action="${pageContext.request.contextPath}/groups/delete" style="display:inline">
@@ -36,6 +41,7 @@
                     <button type="submit">Delete</button>
                 </form>
             </td>
+            </c:if>
         </tr>
     </c:forEach>
 </table>

@@ -25,7 +25,7 @@
     <br><br>
 
     Password Hash:
-    <input type="password" name="passwordHash" value="">
+    <input type="password" name="password" value="">
     <br><br>
 
     Role:

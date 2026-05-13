@@ -13,7 +13,9 @@
 <body>
 <h2>Sessions</h2>
 <p><a href="${pageContext.request.contextPath}/">на домашнюю</a></p>
+<c:if test="${not empty user}">
 <p><a href="${pageContext.request.contextPath}/sessions/edit">Add new session</a></p>
+</c:if>
 
 <table>
     <tr>
@@ -21,7 +23,9 @@
         <th>Number</th>
         <th>Year</th>
         <th>Semester</th>
+        <c:if test="${not empty user}">
         <th>Action</th>
+        </c:if>
     </tr>
     <c:forEach var="session" items="${sessions}">
         <tr>
@@ -29,6 +33,7 @@
             <td><c:out value="${session.sessionNumber}" /></td>
             <td><c:out value="${session.year}" /></td>
             <td><c:out value="${session.semester}" /></td>
+            <c:if test="${not empty user}">
             <td>
                 <a href="${pageContext.request.contextPath}/sessions/edit?id=${session.sessionId}">Edit</a>
                 <form method="post" action="${pageContext.request.contextPath}/sessions/delete" style="display:inline">
@@ -36,6 +41,7 @@
                     <button type="submit">Delete</button>
                 </form>
             </td>
+            </c:if>
         </tr>
     </c:forEach>
 </table>
