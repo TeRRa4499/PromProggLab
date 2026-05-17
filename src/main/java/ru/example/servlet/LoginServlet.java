@@ -10,8 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Collection;
-
+import java.net.URLEncoder;
 
 public class LoginServlet extends HttpServlet {
     @Override
@@ -43,16 +42,16 @@ public class LoginServlet extends HttpServlet {
                     resp.sendRedirect(req.getContextPath());
                 } else {
                     String message = "Имя пользователя или пароль неопознанны";
-                    String url = req.getContextPath()
+                    String url = "/WEB-INF/views"
                                + "/login-form.jsp?message="
                                + URLEncoder.encode(message, "UTF-8");
-                    resp.sendRedirect(url);
+                  req.getRequestDispatcher(url).forward(req, resp);
                 }
             } catch(SQLException e) {
                 throw new ServletException(e);
             }
         } else {
-            resp.sendRedirect(req.getContextPath() + "/login-form.jsp");
+              req.getRequestDispatcher("/WEB-INF/views/login-form.jsp").forward(req, resp);
         }
     }
 }

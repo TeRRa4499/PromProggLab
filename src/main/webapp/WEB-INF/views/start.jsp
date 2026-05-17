@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,6 +8,14 @@
 </head>
 <body>
 <h2>Student Group Manager</h2>
+        <c:choose>
+            <c:when test="${not empty user}">
+                ${user.login}&nbsp;&mdash; <A href="logout.html">выйти</A>
+            </c:when>
+            <c:otherwise>
+                <A href="login.html">войти</A>
+            </c:otherwise>
+        </c:choose>
 <ul>
     <li><a href="${pageContext.request.contextPath}/groups">Группы</a></li>
     <li><a href="${pageContext.request.contextPath}/students">Студенты</a></li>

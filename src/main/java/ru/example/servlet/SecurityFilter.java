@@ -24,10 +24,7 @@ public class SecurityFilter implements Filter {
         if(session != null && session.getAttribute("user") != null) {
             chain.doFilter(req, resp);
         } else {
-            ((HttpServletResponse)resp).sendRedirect(
-                ((HttpServletRequest)req).getContextPath()
-                + "/login-form.jsp"
-            );
+             req.getRequestDispatcher("/WEB-INF/views/login-form.jsp").forward(req, resp);
         }
     }
 
